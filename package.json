@@ -1,0 +1,15 @@
+{
+  "name": "couple-takeaway",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Invite-only WeChat mini program with a Java backend.",
+  "scripts": {
+    "validate:miniprogram": "node scripts/validate-miniprogram.mjs",
+    "test:product-editor": "node scripts/test-product-editor.mjs",
+    "test": "npm run validate:miniprogram && npm run test:product-editor"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT"
+}

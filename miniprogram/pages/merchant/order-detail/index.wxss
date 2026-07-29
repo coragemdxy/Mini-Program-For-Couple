@@ -1,0 +1,44 @@
+.compact {
+  padding-top: 20rpx;
+}
+
+.line {
+  padding: 22rpx 0;
+  border-bottom: 1rpx solid var(--line);
+}
+
+.detail,
+.remark {
+  display: block;
+  margin-top: 10rpx;
+}
+
+.total-line {
+  padding-top: 24rpx;
+}
+
+.highlight {
+  background: #fff0ea;
+}
+
+.remark {
+  color: #79594c;
+  font-size: 32rpx;
+  line-height: 1.6;
+}
+
+.event {
+  display: flex;
+  gap: 18rpx;
+  padding-top: 24rpx;
+}
+
+.dot {
+  flex: none;
+  width: 15rpx;
+  height: 15rpx;
+  margin-top: 9rpx;
+  background: var(--brand);
+  border: 7rpx solid #ffe6df;
+  border-radius: 50%;
+}

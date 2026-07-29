@@ -1,0 +1,39 @@
+{
+  "appid": "wxd95c518cfd9bc745",
+  "compileType": "miniprogram",
+  "libVersion": "trial",
+  "miniprogramRoot": "miniprogram/",
+  "projectname": "couple-takeaway",
+  "setting": {
+    "checkSiteMap": true,
+    "coverView": true,
+    "es6": true,
+    "minified": true,
+    "postcss": true,
+    "useCompilerPlugins": false,
+    "compileWorklet": false,
+    "uglifyFileName": false,
+    "uploadWithSourceMap": true,
+    "enhance": false,
+    "packNpmManually": false,
+    "packNpmRelationList": [],
+    "minifyWXSS": true,
+    "minifyWXML": true,
+    "localPlugins": false,
+    "disableUseStrict": false,
+    "condition": false,
+    "swc": false,
+    "disableSWC": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    }
+  },
+  "simulatorPluginLibVersion": {},
+  "packOptions": {
+    "ignore": [],
+    "include": []
+  },
+  "editorSetting": {}
+}

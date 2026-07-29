@@ -1,0 +1,42 @@
+.profile-hero {
+  display: flex;
+  align-items: center;
+  gap: 24rpx;
+  padding: 36rpx 8rpx 42rpx;
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 104rpx;
+  height: 104rpx;
+  background: linear-gradient(145deg, #ff8b7d, #ff5b61);
+  color: #fff;
+  border-radius: 36rpx;
+  box-shadow: 0 14rpx 30rpx rgba(233, 79, 85, 0.2);
+  font-size: 48rpx;
+}
+
+.profile-hero .hero-title {
+  font-size: 43rpx;
+}
+
+.profile-hero .hero-subtitle {
+  margin-top: 8rpx;
+}
+
+.help,
+.about {
+  display: block;
+  margin-top: 12rpx;
+  line-height: 1.7;
+}
+
+.action {
+  margin-top: 24rpx;
+}
+
+.setting {
+  padding-top: 20rpx;
+}

@@ -1,0 +1,36 @@
+<view class="page">
+  <view class="card">
+    <text class="title">{{editingId ? '编辑分类' : '新增分类'}}</text>
+    <input class="input" maxlength="80" placeholder="分类名称" value="{{name}}" bindinput="onName" />
+    <input class="input" type="number" placeholder="排序数字" value="{{sortOrder}}" bindinput="onSort" />
+    <view class="row between switch-line">
+      <text>显示这个分类</text>
+      <switch color="#ff6b6b" checked="{{enabled}}" bindchange="onEnabled" />
+    </view>
+    <view class="button-row">
+      <button class="primary" bindtap="save">{{editingId ? '保存修改' : '创建分类'}}</button>
+      <button wx:if="{{editingId}}" class="ghost" bindtap="clear">取消编辑</button>
+    </view>
+  </view>
+
+  <view class="category-list">
+    <view wx:for="{{categories}}" wx:key="id" class="category-item">
+      <view class="category-info">
+        <view class="category-title-row">
+          <text class="category-name">{{item.name}}</text>
+          <view class="status-pill {{item.enabled ? 'enabled' : 'disabled'}}">
+            <view class="status-dot"></view>
+            <text>{{item.enabled ? '显示中' : '已隐藏'}}</text>
+          </view>
+        </view>
+        <text class="category-meta">排序 {{item.sortOrder}}</text>
+      </view>
+      <view class="category-actions">
+        <view class="action-chip edit-chip" data-id="{{item.id}}" bindtap="edit">编辑</view>
+        <view class="action-chip delete-chip" data-id="{{item.id}}" bindtap="remove">删除</view>
+      </view>
+    </view>
+  </view>
+
+  <role-nav role="merchant" active="categories" />
+</view>

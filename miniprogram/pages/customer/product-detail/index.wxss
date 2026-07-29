@@ -1,0 +1,43 @@
+.big-cover {
+  width: 100%;
+  height: 460rpx;
+  background: #f8ece5;
+  border-radius: 32rpx;
+}
+
+.detail-head {
+  padding: 34rpx 8rpx 20rpx;
+}
+
+.detail-head .hero-title {
+  font-size: 42rpx;
+}
+
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14rpx;
+  margin-top: 22rpx;
+}
+
+.option {
+  padding: 16rpx 22rpx;
+  background: #faf6f3;
+  border: 2rpx solid transparent;
+  border-radius: 18rpx;
+}
+
+.option.selected {
+  background: #fff0ea;
+  border-color: var(--brand);
+  color: var(--brand-dark);
+}
+
+.stepper {
+  gap: 28rpx;
+}
+
+.stepper button {
+  width: 62rpx;
+  padding: 0;
+}

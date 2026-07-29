@@ -1,0 +1,22 @@
+<view class="page launch">
+  <view class="hero">
+    <text class="eyebrow">FOR MY FAVORITE PERSON</text>
+    <text class="hero-title">两个人的\n小外卖</text>
+    <text class="hero-subtitle">想喝什么、想吃什么、想要一个抱抱，都可以在这里下单。</text>
+  </view>
+
+  <view class="card status-card">
+    <view class="heart">♥</view>
+    <text class="title">{{loading ? '正在准备今日菜单…' : '还没有连接成功'}}</text>
+    <text class="muted small">请先确认本机 Java 服务已经启动。</text>
+  </view>
+
+  <view wx:if="{{localMode}}" class="card">
+    <text class="title">本地验收身份</text>
+    <text class="muted small">当前：{{currentIdentity}}</text>
+    <view class="button-row">
+      <button class="secondary" bindtap="useCustomer">我是顾客</button>
+      <button class="ghost" bindtap="useMerchant">我是商家</button>
+    </view>
+  </view>
+</view>

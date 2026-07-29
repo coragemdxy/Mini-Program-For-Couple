@@ -1,0 +1,153 @@
+.switch-line {
+  padding-top: 26rpx;
+}
+
+.preview {
+  display: block;
+  width: 100%;
+  height: 340rpx;
+  margin: 20rpx 0;
+  background: #f8ece5;
+  border-radius: 22rpx;
+}
+
+.help {
+  display: block;
+  margin-top: 14rpx;
+  line-height: 1.6;
+}
+
+.spec-section {
+  margin: 34rpx 0 24rpx;
+}
+
+.spec-heading {
+  align-items: flex-start;
+  gap: 20rpx;
+  margin: 0 4rpx 20rpx;
+}
+
+.spec-heading > view {
+  flex: 1;
+}
+
+.empty-spec {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10rpx;
+  padding: 50rpx 24rpx;
+}
+
+.empty-icon {
+  color: var(--brand);
+  font-size: 54rpx;
+}
+
+.spec-group {
+  border: 2rpx solid #efded5;
+}
+
+.group-toolbar {
+  padding-bottom: 20rpx;
+  border-bottom: 1rpx solid var(--line);
+}
+
+.group-number,
+.option-number {
+  color: var(--brand-dark);
+  font-size: 25rpx;
+  font-weight: 700;
+}
+
+.order-actions {
+  display: flex;
+  gap: 8rpx;
+}
+
+.icon-button {
+  min-width: 58rpx;
+  min-height: 52rpx;
+  padding: 0 14rpx;
+  border-radius: 14rpx;
+  font-size: 22rpx;
+  line-height: 52rpx;
+}
+
+.setting-line {
+  margin-top: 26rpx;
+}
+
+.setting-help {
+  display: block;
+  margin-top: 6rpx;
+}
+
+.segment {
+  display: flex;
+  margin-top: 14rpx;
+  padding: 6rpx;
+  background: #f7f0ec;
+  border-radius: 18rpx;
+}
+
+.segment-item {
+  flex: 1;
+  padding: 17rpx;
+  color: var(--muted);
+  border-radius: 14rpx;
+  text-align: center;
+}
+
+.segment-item.active {
+  background: #fff;
+  color: var(--brand-dark);
+  font-weight: 700;
+  box-shadow: 0 5rpx 16rpx rgba(93, 62, 48, 0.08);
+}
+
+.selection-limits,
+.option-fields {
+  display: flex;
+  gap: 16rpx;
+}
+
+.limit-field,
+.option-name,
+.option-price {
+  flex: 1;
+  min-width: 0;
+}
+
+.compact-input {
+  text-align: center;
+}
+
+.option-heading {
+  margin-top: 34rpx;
+}
+
+.option-title {
+  font-size: 29rpx;
+}
+
+.option-editor {
+  margin-top: 16rpx;
+  padding: 20rpx;
+  background: #fbf7f4;
+  border: 1rpx solid var(--line);
+  border-radius: 20rpx;
+}
+
+.option-enabled {
+  margin-top: 18rpx;
+  color: var(--muted);
+}
+
+.add-option {
+  margin-top: 18rpx;
+}
+
+.remove {
+  margin-top: 20rpx;
+}

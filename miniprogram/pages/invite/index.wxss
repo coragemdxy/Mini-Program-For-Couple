@@ -1,0 +1,16 @@
+.code {
+  letter-spacing: 3rpx;
+  text-transform: uppercase;
+}
+
+.submit {
+  margin-top: 38rpx;
+}
+
+.local-tip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--muted);
+  font-size: 23rpx;
+}

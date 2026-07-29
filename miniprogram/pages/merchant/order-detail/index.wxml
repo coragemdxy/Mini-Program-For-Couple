@@ -1,0 +1,54 @@
+<view class="page" wx:if="{{order}}">
+  <view class="hero compact">
+    <view class="row between">
+      <view>
+        <text class="muted small">来自</text>
+        <text class="hero-title">{{order.customerName}}</text>
+      </view>
+      <text class="badge status">{{order.statusLabel}}</text>
+    </view>
+    <text class="hero-subtitle">{{order.orderNo}} · {{order.displayTime}}</text>
+  </view>
+
+  <view class="card">
+    <text class="title">她想要</text>
+    <view wx:for="{{order.items}}" wx:key="id" class="line row between">
+      <view class="grow">
+        <text>{{item.productName}} × {{item.quantity}}</text>
+        <text class="muted small detail">{{item.optionSummary || '默认规格'}}</text>
+      </view>
+      <text>♥{{item.displayTotal}}</text>
+    </view>
+    <view class="row between total-line">
+      <text>合计</text>
+      <text class="price">{{order.displayTotal}}</text>
+    </view>
+  </view>
+
+  <view wx:if="{{order.remark}}" class="card highlight">
+    <text class="title">特别留言</text>
+    <text class="remark">{{order.remark}}</text>
+  </view>
+
+  <view wx:if="{{actions.length}}" class="card">
+    <text class="title">更新进度</text>
+    <textarea class="textarea" maxlength="500" placeholder="可选：给她留一句话，例如“马上安排”" value="{{message}}" bindinput="onMessage" />
+    <view class="button-row">
+      <button wx:for="{{actions}}" wx:key="status" class="{{item.style}}" data-status="{{item.status}}" bindtap="changeStatus">{{item.label}}</button>
+    </view>
+  </view>
+
+  <view class="card">
+    <text class="title">操作记录</text>
+    <view wx:for="{{order.events}}" wx:key="id" class="event">
+      <view class="dot"></view>
+      <view class="grow">
+        <view class="row between">
+          <text>{{item.newStatusLabel}}</text>
+          <text class="muted small">{{item.displayTime}}</text>
+        </view>
+        <text wx:if="{{item.message}}" class="muted small detail">{{item.message}}</text>
+      </view>
+    </view>
+  </view>
+</view>

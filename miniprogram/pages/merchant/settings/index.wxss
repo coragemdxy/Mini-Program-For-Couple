@@ -1,0 +1,35 @@
+.help {
+  display: block;
+  margin-top: 12rpx;
+  line-height: 1.6;
+}
+
+.action {
+  margin-top: 24rpx;
+}
+
+.invitation {
+  margin-top: 24rpx;
+  padding: 24rpx;
+  background: #fff8f3;
+  border-radius: 20rpx;
+  text-align: center;
+}
+
+.code {
+  display: block;
+  margin-bottom: 10rpx;
+  color: var(--brand-dark);
+  font-family: Menlo, monospace;
+  font-size: 39rpx;
+  font-weight: 800;
+  letter-spacing: 2rpx;
+}
+
+.copy {
+  margin-top: 16rpx;
+}
+
+.setting {
+  padding-top: 20rpx;
+}

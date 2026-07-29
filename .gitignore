@@ -1,0 +1,29 @@
+# macOS / editors
+.DS_Store
+.idea/
+.vscode/
+*.iml
+
+# Java
+target/
+*.log
+hs_err_pid*
+
+# Maven wrapper cache
+.mvn/wrapper/maven-wrapper.jar
+
+# Node
+node_modules/
+npm-debug.log*
+
+# Local runtime data and secrets
+.data/
+.env
+.env.*
+!.env.example
+project.private.config.json
+
+# WeChat DevTools
+miniprogram_npm/
+.wechat/
+

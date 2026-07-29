@@ -1,0 +1,21 @@
+<view class="page">
+  <view class="hero">
+    <text class="hero-title">这是我们的小店</text>
+    <text class="hero-subtitle">第一次来需要一枚专属邀请码。验证通过后，这台微信以后会自动进入。</text>
+  </view>
+
+  <view class="card">
+    <text class="label">怎么称呼你</text>
+    <input class="input" maxlength="40" placeholder="例如：小可爱" value="{{nickname}}" bindinput="onNickname" />
+
+    <text class="label">邀请码</text>
+    <input class="input code" maxlength="80" placeholder="输入老板给你的邀请码" value="{{code}}" bindinput="onCode" />
+
+    <button class="primary submit" loading="{{submitting}}" disabled="{{submitting}}" bindtap="submit">进入小店</button>
+  </view>
+
+  <view wx:if="{{localMode}}" class="local-tip">
+    <text>本地身份：{{currentIdentity}}</text>
+    <button class="ghost mini" bindtap="switchIdentity">切换顾客/商家</button>
+  </view>
+</view>

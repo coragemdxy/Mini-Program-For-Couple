@@ -1,0 +1,32 @@
+.launch {
+  background:
+    radial-gradient(circle at 85% 10%, rgba(255, 184, 172, 0.55), transparent 36%),
+    var(--paper);
+}
+
+.eyebrow {
+  display: block;
+  margin-bottom: 24rpx;
+  color: var(--brand-dark);
+  font-size: 21rpx;
+  font-weight: 700;
+  letter-spacing: 4rpx;
+}
+
+.status-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50rpx 30rpx;
+  text-align: center;
+}
+
+.status-card .small {
+  margin-top: 12rpx;
+}
+
+.heart {
+  margin-bottom: 18rpx;
+  color: var(--brand);
+  font-size: 62rpx;
+}

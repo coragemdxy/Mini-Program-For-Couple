@@ -1,0 +1,8 @@
+.git
+.github
+.data
+**/target
+node_modules
+project.private.config.json
+.env
+*.log

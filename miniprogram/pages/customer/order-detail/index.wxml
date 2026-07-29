@@ -1,0 +1,54 @@
+<view class="page" wx:if="{{order}}">
+  <view wx:if="{{created}}" class="success">
+    <text class="success-icon">♥</text>
+    <text class="hero-title">下单成功</text>
+    <text class="hero-subtitle">老板已经能看到啦。</text>
+  </view>
+
+  <view class="card">
+    <view class="row between">
+      <view>
+        <text class="muted small">订单号</text>
+        <text class="title number">{{order.orderNo}}</text>
+      </view>
+      <text class="badge status">{{order.statusLabel}}</text>
+    </view>
+    <text class="muted small time">{{order.displayTime}}</text>
+  </view>
+
+  <view class="card">
+    <text class="title">订单内容</text>
+    <view wx:for="{{order.items}}" wx:key="id" class="line row between">
+      <view class="grow">
+        <text>{{item.productName}} × {{item.quantity}}</text>
+        <text class="muted small detail">{{item.optionSummary || '默认规格'}}</text>
+      </view>
+      <text>♥{{item.displayTotal}}</text>
+    </view>
+    <view class="row between total-line">
+      <text>合计</text>
+      <text class="price">{{order.displayTotal}}</text>
+    </view>
+  </view>
+
+  <view wx:if="{{order.remark}}" class="card">
+    <text class="title">我的留言</text>
+    <text class="remark">{{order.remark}}</text>
+  </view>
+
+  <view class="card">
+    <text class="title">进度</text>
+    <view wx:for="{{order.events}}" wx:key="id" class="event">
+      <view class="dot"></view>
+      <view class="grow">
+        <view class="row between">
+          <text>{{item.newStatusLabel}}</text>
+          <text class="muted small">{{item.displayTime}}</text>
+        </view>
+        <text wx:if="{{item.message}}" class="muted small event-message">{{item.message}}</text>
+      </view>
+    </view>
+  </view>
+
+  <button wx:if="{{order.status === 'SUBMITTED'}}" class="danger" bindtap="cancel">取消订单</button>
+</view>

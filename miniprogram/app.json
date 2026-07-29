@@ -1,0 +1,31 @@
+{
+  "pages": [
+    "pages/launch/index",
+    "pages/invite/index",
+    "pages/customer/home/index",
+    "pages/customer/product-detail/index",
+    "pages/customer/cart/index",
+    "pages/customer/orders/index",
+    "pages/customer/profile/index",
+    "pages/customer/order-detail/index",
+    "pages/merchant/orders/index",
+    "pages/merchant/order-detail/index",
+    "pages/merchant/products/index",
+    "pages/merchant/product-edit/index",
+    "pages/merchant/categories/index",
+    "pages/merchant/settings/index"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#fff8f3",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "两个人的小外卖",
+    "backgroundColor": "#fff8f3",
+    "backgroundTextStyle": "light"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents",
+  "usingComponents": {
+    "role-nav": "/components/role-nav/index"
+  }
+}

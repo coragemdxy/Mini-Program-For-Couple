@@ -1,0 +1,39 @@
+services:
+  mysql:
+    image: mysql:8.4
+    environment:
+      MYSQL_DATABASE: takeaway
+      MYSQL_USER: takeaway
+      MYSQL_PASSWORD: takeaway-local
+      MYSQL_ROOT_PASSWORD: root-local-only
+    volumes:
+      - mysql-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-uroot", "-proot-local-only"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      SPRING_PROFILES_ACTIVE: mysql
+      DB_URL: jdbc:mysql://mysql:3306/takeaway?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+      DB_USERNAME: takeaway
+      DB_PASSWORD: takeaway-local
+      APP_IDENTITY_MODE: debug
+      APP_NOTIFICATION_MODE: log
+      APP_STORAGE_DIRECTORY: /data/uploads
+    ports:
+      - "8080:8080"
+    volumes:
+      - upload-data:/data/uploads
+
+volumes:
+  mysql-data:
+  upload-data:

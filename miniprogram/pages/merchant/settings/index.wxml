@@ -1,0 +1,35 @@
+<view class="page">
+  <view class="hero">
+    <text class="hero-title">小店设置</text>
+    <text class="hero-subtitle">管理邀请和微信提醒。邀请码只在生成时显示，请及时发给她。</text>
+  </view>
+
+  <view class="card">
+    <text class="title">顾客邀请码</text>
+    <text class="muted small help">生成一个 30 天有效、只能使用一次的邀请码。</text>
+    <button class="primary action" bindtap="createInvitation">生成新邀请码</button>
+    <view wx:if="{{invitation}}" class="invitation">
+      <text class="code">{{invitation.code}}</text>
+      <text class="muted small">有效期至 {{invitation.displayExpiry}}</text>
+      <button class="secondary mini copy" bindtap="copyInvitation">复制邀请码</button>
+    </view>
+  </view>
+
+  <view class="card">
+    <text class="title">微信新订单提醒</text>
+    <text class="muted small help">{{localMode ? '本地模式会模拟授权，通知内容打印在 Java 日志中。' : '点击后微信会询问是否允许接收一次新订单通知。'}}</text>
+    <button class="secondary action" bindtap="subscribeNewOrder">允许新单提醒</button>
+    <view wx:for="{{notificationSettings}}" wx:key="type" class="setting row between">
+      <text>{{item.type === 'NEW_ORDER' ? '新订单' : '订单状态'}}</text>
+      <text class="badge">{{item.lastResult || '未设置'}}</text>
+    </view>
+  </view>
+
+  <view wx:if="{{localMode}}" class="card">
+    <text class="title">本地验收</text>
+    <text class="muted small help">切换成顾客身份，模拟她浏览和下单。</text>
+    <button class="ghost action" bindtap="switchToCustomer">切换为顾客</button>
+  </view>
+
+  <role-nav role="merchant" active="settings" />
+</view>

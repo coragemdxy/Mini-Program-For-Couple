@@ -1,0 +1,22 @@
+<view class="page">
+  <view class="hero">
+    <text class="hero-title">我的小期待</text>
+    <text class="hero-subtitle">每一单都会由老板亲自处理。</text>
+  </view>
+
+  <view wx:if="{{!loading && orders.length === 0}}" class="empty">还没有下过单～</view>
+
+  <view wx:for="{{orders}}" wx:key="id" class="card" data-id="{{item.id}}" bindtap="open">
+    <view class="row between">
+      <text class="title">#{{item.orderNo}}</text>
+      <text class="badge">{{item.statusLabel}}</text>
+    </view>
+    <text class="summary">{{item.summary}}</text>
+    <view class="row between meta">
+      <text class="muted small">{{item.displayTime}}</text>
+      <text class="price">{{item.displayTotal}}</text>
+    </view>
+  </view>
+
+  <role-nav role="customer" active="orders" cart-count="{{cartCount}}" />
+</view>

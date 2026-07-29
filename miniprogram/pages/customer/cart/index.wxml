@@ -1,0 +1,38 @@
+<view class="page">
+  <view wx:if="{{items.length === 0}}" class="empty">
+    <text class="hero-title">购物篮空空的</text>
+    <text class="hero-subtitle">返回菜单挑一点今天想要的吧。</text>
+  </view>
+
+  <view wx:for="{{items}}" wx:key="productId" class="card row">
+    <image wx:if="{{item.displayImage}}" class="cover cart-cover" mode="aspectFill" src="{{item.displayImage}}" />
+    <view wx:else class="cover cart-cover placeholder">♥</view>
+    <view class="grow">
+      <text class="title">{{item.name}}</text>
+      <text class="muted small option-summary">{{item.optionSummary || '默认规格'}}</text>
+      <view class="row between item-bottom">
+        <text class="price">{{item.displayPrice}}</text>
+        <view class="stepper row">
+          <button class="ghost mini" data-index="{{index}}" data-delta="-1" bindtap="changeQuantity">−</button>
+          <text>{{item.quantity}}</text>
+          <button class="ghost mini" data-index="{{index}}" data-delta="1" bindtap="changeQuantity">＋</button>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{items.length}}" class="card">
+    <text class="title">给老板留言</text>
+    <textarea class="textarea" maxlength="500" placeholder="例如：晚上八点再做、想一起散步…" value="{{remark}}" bindinput="onRemark" />
+  </view>
+
+  <view wx:if="{{items.length}}" class="fixed-bar checkout-bar">
+    <view class="grow">
+      <text class="muted small">合计心意值</text>
+      <text class="price total">{{total}}</text>
+    </view>
+    <button class="primary" loading="{{submitting}}" disabled="{{submitting}}" bindtap="submit">确认下单</button>
+  </view>
+
+  <role-nav role="customer" active="cart" cart-count="{{cartCount}}" />
+</view>

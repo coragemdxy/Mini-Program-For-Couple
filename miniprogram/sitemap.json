@@ -1,0 +1,9 @@
+{
+  "desc": "仅受邀用户使用",
+  "rules": [
+    {
+      "action": "disallow",
+      "page": "*"
+    }
+  ]
+}

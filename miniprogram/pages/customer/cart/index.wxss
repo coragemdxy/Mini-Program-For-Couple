@@ -1,0 +1,36 @@
+.cart-cover {
+  width: 112rpx;
+  height: 112rpx;
+}
+
+.option-summary {
+  display: block;
+  margin-top: 8rpx;
+}
+
+.item-bottom {
+  margin-top: 20rpx;
+}
+
+.stepper {
+  gap: 20rpx;
+}
+
+.stepper button {
+  width: 58rpx;
+  padding: 0;
+}
+
+.total {
+  display: block;
+  margin-top: 2rpx;
+}
+
+.page {
+  padding-bottom: calc(280rpx + env(safe-area-inset-bottom));
+}
+
+.checkout-bar {
+  bottom: calc(126rpx + env(safe-area-inset-bottom));
+  padding-bottom: 20rpx;
+}

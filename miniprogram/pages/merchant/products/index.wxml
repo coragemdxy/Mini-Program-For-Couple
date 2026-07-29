@@ -1,0 +1,28 @@
+<view class="page">
+  <view class="row search">
+    <input class="input grow" placeholder="搜索商品" value="{{query}}" bindinput="onQuery" confirm-type="search" bindconfirm="load" />
+    <button class="primary mini search-button" bindtap="load">搜索</button>
+  </view>
+
+  <button class="primary add" bindtap="add">＋ 新增商品</button>
+
+  <view wx:if="{{!loading && products.length === 0}}" class="empty">还没有商品。</view>
+
+  <view wx:for="{{products}}" wx:key="id" class="card product">
+    <image wx:if="{{item.displayCover}}" class="cover" mode="aspectFill" src="{{item.displayCover}}" />
+    <view wx:else class="cover placeholder">♥</view>
+    <view class="grow">
+      <view class="row between">
+        <text class="title">{{item.name}}</text>
+        <switch color="#ff6b6b" checked="{{item.enabled}}" data-id="{{item.id}}" bindchange="toggle" />
+      </view>
+      <text class="muted small info">{{item.categoryName}} · 库存 {{item.stock === null ? '不限' : item.stock}}</text>
+      <view class="row between footer">
+        <text class="price">{{item.displayPrice}}</text>
+        <button class="ghost mini" data-id="{{item.id}}" bindtap="edit">编辑</button>
+      </view>
+    </view>
+  </view>
+
+  <role-nav role="merchant" active="products" />
+</view>

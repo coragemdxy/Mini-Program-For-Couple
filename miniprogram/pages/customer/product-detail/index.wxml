@@ -1,0 +1,39 @@
+<view class="page" wx:if="{{product}}">
+  <image wx:if="{{product.displayCover}}" class="big-cover" mode="aspectFill" src="{{product.displayCover}}" />
+  <view wx:else class="big-cover placeholder">♥</view>
+
+  <view class="detail-head">
+    <view class="row between">
+      <text class="hero-title">{{product.name}}</text>
+      <text class="price">{{product.virtualPrice}}</text>
+    </view>
+    <text class="hero-subtitle">{{product.description}}</text>
+  </view>
+
+  <view wx:for="{{product.optionGroups}}" wx:key="id" class="card">
+    <view class="row between">
+      <text class="title">{{item.name}}</text>
+      <text class="muted small">{{item.required ? '必选' : '可选'}} · 最多 {{item.maxSelect}} 项</text>
+    </view>
+    <view class="options">
+      <view wx:for="{{item.options}}" wx:key="id" wx:for-item="option" class="option {{option.selected ? 'selected' : ''}}" data-group="{{item.id}}" data-option="{{option.id}}" bindtap="toggleOption">
+        <text>{{option.name}}</text>
+        <text wx:if="{{option.extraPrice > 0}}" class="small">+♥{{option.displayExtra}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="card row between">
+    <text class="title">数量</text>
+    <view class="stepper row">
+      <button class="ghost mini" bindtap="minus">−</button>
+      <text>{{quantity}}</text>
+      <button class="ghost mini" bindtap="plus">＋</button>
+    </view>
+  </view>
+
+  <view class="fixed-bar">
+    <text class="price">{{displayPrice}}</text>
+    <button class="primary" bindtap="addToCart">放进购物篮</button>
+  </view>
+</view>

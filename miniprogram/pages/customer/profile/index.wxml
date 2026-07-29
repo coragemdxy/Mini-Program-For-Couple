@@ -1,0 +1,32 @@
+<view class="page">
+  <view class="profile-hero">
+    <view class="avatar">♥</view>
+    <view wx:if="{{session}}">
+      <text class="hero-title">{{session.nickname}}</text>
+      <text class="hero-subtitle">专属顾客 · {{session.openidHint}}</text>
+    </view>
+  </view>
+
+  <view class="card">
+    <text class="title">订单状态提醒</text>
+    <text class="muted small help">{{localMode ? '本地模式会模拟授权，通知会打印在 Java 终端。' : '允许后，老板更新订单时可以通过微信提醒你。'}}</text>
+    <button class="secondary action" bindtap="subscribeOrderStatus">允许订单提醒</button>
+    <view wx:for="{{notificationSettings}}" wx:key="type" class="setting row between">
+      <text>{{item.type === 'ORDER_STATUS' ? '订单状态' : '新订单'}}</text>
+      <text class="badge">{{item.lastResult || '未设置'}}</text>
+    </view>
+  </view>
+
+  <view class="card">
+    <text class="title">关于这家小店</text>
+    <text class="muted about">这里没有真实支付，价格代表心意值。每一张订单都会由老板亲自处理。</text>
+  </view>
+
+  <view wx:if="{{localMode}}" class="card">
+    <text class="title">本地验收</text>
+    <text class="muted small help">切换成商家身份，模拟老板处理订单。</text>
+    <button class="ghost action" bindtap="switchToMerchant">切换为商家</button>
+  </view>
+
+  <role-nav role="customer" active="profile" cart-count="{{cartCount}}" />
+</view>

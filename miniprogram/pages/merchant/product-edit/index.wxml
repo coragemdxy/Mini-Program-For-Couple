@@ -1,0 +1,132 @@
+<view class="page">
+  <view class="card">
+    <text class="label">商品名称</text>
+    <input class="input" maxlength="120" placeholder="例如：专属奶茶" value="{{name}}" data-field="name" bindinput="field" />
+
+    <text class="label">所属分类</text>
+    <picker mode="selector" range="{{categories}}" range-key="name" value="{{categoryIndex}}" bindchange="category">
+      <view class="picker">{{categories.length ? categories[categoryIndex].name : '请先创建分类'}}</view>
+    </picker>
+
+    <text class="label">商品介绍</text>
+    <textarea class="textarea" maxlength="1000" placeholder="写一点可爱的介绍" value="{{description}}" data-field="description" bindinput="field" />
+
+    <text class="label">虚拟价格（心意值）</text>
+    <input class="input" type="digit" value="{{virtualPrice}}" data-field="virtualPrice" bindinput="field" />
+
+    <text class="label">库存（留空表示不限）</text>
+    <input class="input" type="number" value="{{stock}}" data-field="stock" bindinput="field" />
+
+    <text class="label">排序数字</text>
+    <input class="input" type="number" value="{{sortOrder}}" data-field="sortOrder" bindinput="field" />
+
+    <text class="label">搜索关键词</text>
+    <input class="input" maxlength="500" placeholder="奶茶 饮料 甜" value="{{searchKeywords}}" data-field="searchKeywords" bindinput="field" />
+
+    <view class="switch-line row between">
+      <text>立即上架</text>
+      <switch color="#ff6b6b" checked="{{enabled}}" data-field="enabled" bindchange="boolField" />
+    </view>
+    <view class="switch-line row between">
+      <text>首页推荐</text>
+      <switch color="#ff6b6b" checked="{{recommended}}" data-field="recommended" bindchange="boolField" />
+    </view>
+  </view>
+
+  <view class="card">
+    <text class="title">商品图片</text>
+    <image wx:if="{{displayCover}}" class="preview" mode="aspectFill" src="{{displayCover}}" />
+    <view wx:else class="preview placeholder">♥</view>
+    <button class="secondary" bindtap="chooseImage">选择并上传图片</button>
+  </view>
+
+  <view class="spec-section">
+    <view class="row between spec-heading">
+      <view>
+        <text class="title">商品规格</text>
+        <text class="muted small help">例如温度、甜度、口味。不需要规格时可以保持为空。</text>
+      </view>
+      <button class="secondary mini" bindtap="addGroup">＋ 新增规格组</button>
+    </view>
+
+    <view wx:if="{{optionGroups.length === 0}}" class="card empty-spec">
+      <text class="empty-icon">◇</text>
+      <text>这个商品暂时没有规格</text>
+      <text class="muted small">顾客可以直接选择数量并加入购物篮。</text>
+    </view>
+
+    <view wx:for="{{optionGroups}}" wx:key="_key" wx:for-item="group" wx:for-index="groupIndex" class="card spec-group">
+      <view class="row between group-toolbar">
+        <text class="group-number">规格组 {{groupIndex + 1}}</text>
+        <view class="order-actions">
+          <button class="ghost icon-button" disabled="{{groupIndex === 0}}" data-group-index="{{groupIndex}}" data-delta="-1" bindtap="moveGroup">↑</button>
+          <button class="ghost icon-button" disabled="{{groupIndex === optionGroups.length - 1}}" data-group-index="{{groupIndex}}" data-delta="1" bindtap="moveGroup">↓</button>
+          <button class="danger icon-button" data-group-index="{{groupIndex}}" bindtap="removeGroup">删除</button>
+        </view>
+      </view>
+
+      <text class="label">规格组名称</text>
+      <input class="input" maxlength="80" placeholder="例如：温度、甜度、口味" value="{{group.name}}" data-group-index="{{groupIndex}}" data-field="name" bindinput="updateGroupField" />
+
+      <view class="row between setting-line">
+        <view>
+          <text>是否必选</text>
+          <text class="muted small setting-help">{{group.required ? '顾客必须选择后才能下单' : '顾客可以不选择'}}</text>
+        </view>
+        <switch color="#ff6b6b" checked="{{group.required}}" data-group-index="{{groupIndex}}" bindchange="toggleGroupRequired" />
+      </view>
+
+      <text class="label">选择方式</text>
+      <view class="segment">
+        <view class="segment-item {{group.mode === 'single' ? 'active' : ''}}" data-group-index="{{groupIndex}}" data-mode="single" bindtap="chooseGroupMode">单选</view>
+        <view class="segment-item {{group.mode === 'multiple' ? 'active' : ''}}" data-group-index="{{groupIndex}}" data-mode="multiple" bindtap="chooseGroupMode">多选</view>
+      </view>
+
+      <view wx:if="{{group.mode === 'multiple'}}" class="selection-limits">
+        <view wx:if="{{group.required}}" class="limit-field">
+          <text class="label">最少选择</text>
+          <input class="input compact-input" type="number" value="{{group.minSelect}}" data-group-index="{{groupIndex}}" data-field="minSelect" bindinput="updateGroupField" />
+        </view>
+        <view class="limit-field">
+          <text class="label">最多选择</text>
+          <input class="input compact-input" type="number" value="{{group.maxSelect}}" data-group-index="{{groupIndex}}" data-field="maxSelect" bindinput="updateGroupField" />
+        </view>
+      </view>
+
+      <view class="row between option-heading">
+        <text class="title option-title">规格选项</text>
+        <text class="muted small">按当前顺序展示</text>
+      </view>
+
+      <view wx:for="{{group.options}}" wx:key="_key" wx:for-item="option" wx:for-index="optionIndex" class="option-editor">
+        <view class="row between">
+          <text class="option-number">选项 {{optionIndex + 1}}</text>
+          <view class="order-actions">
+            <button class="ghost icon-button" disabled="{{optionIndex === 0}}" data-group-index="{{groupIndex}}" data-option-index="{{optionIndex}}" data-delta="-1" bindtap="moveOption">↑</button>
+            <button class="ghost icon-button" disabled="{{optionIndex === group.options.length - 1}}" data-group-index="{{groupIndex}}" data-option-index="{{optionIndex}}" data-delta="1" bindtap="moveOption">↓</button>
+            <button class="danger icon-button" data-group-index="{{groupIndex}}" data-option-index="{{optionIndex}}" bindtap="removeOption">删除</button>
+          </view>
+        </view>
+        <view class="option-fields">
+          <view class="option-name">
+            <text class="label">名称</text>
+            <input class="input" maxlength="80" placeholder="例如：少冰" value="{{option.name}}" data-group-index="{{groupIndex}}" data-option-index="{{optionIndex}}" data-field="name" bindinput="updateOptionField" />
+          </view>
+          <view class="option-price">
+            <text class="label">额外心意值</text>
+            <input class="input" type="digit" value="{{option.extraPrice}}" data-group-index="{{groupIndex}}" data-option-index="{{optionIndex}}" data-field="extraPrice" bindinput="updateOptionField" />
+          </view>
+        </view>
+        <view class="row between option-enabled">
+          <text class="small">{{option.enabled ? '顾客可以选择' : '暂时不可选择'}}</text>
+          <switch color="#ff6b6b" checked="{{option.enabled}}" data-group-index="{{groupIndex}}" data-option-index="{{optionIndex}}" bindchange="toggleOptionEnabled" />
+        </view>
+      </view>
+
+      <button class="ghost add-option" data-group-index="{{groupIndex}}" bindtap="addOption">＋ 新增规格选项</button>
+    </view>
+  </view>
+
+  <button class="primary" loading="{{saving}}" disabled="{{saving}}" bindtap="save">保存商品</button>
+  <button wx:if="{{editing}}" class="danger remove" bindtap="remove">删除商品</button>
+</view>

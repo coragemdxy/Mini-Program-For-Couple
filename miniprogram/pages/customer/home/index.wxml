@@ -1,0 +1,41 @@
+<view class="page">
+  <view class="welcome">
+    <view>
+      <text class="eyebrow">TODAY'S LITTLE JOY</text>
+      <text class="hero-title">今天想要什么？</text>
+    </view>
+    <text class="bubble">♥</text>
+  </view>
+
+  <view class="search row">
+    <input class="grow" placeholder="搜奶茶、零食、抱抱…" value="{{query}}" bindinput="onQuery" confirm-type="search" bindconfirm="search" />
+    <button class="primary mini search-button" bindtap="search">搜索</button>
+  </view>
+
+  <scroll-view class="categories" scroll-x enhanced show-scrollbar="{{false}}">
+    <view class="category-row">
+      <view class="category {{categoryId === null ? 'active' : ''}}" data-id="all" bindtap="chooseCategory">全部</view>
+      <view wx:for="{{categories}}" wx:key="id" class="category {{categoryId === item.id ? 'active' : ''}}" data-id="{{item.id}}" bindtap="chooseCategory">{{item.name}}</view>
+    </view>
+  </scroll-view>
+
+  <view wx:if="{{!loading && products.length === 0}}" class="empty">今天这个货架还是空的～</view>
+
+  <view wx:for="{{products}}" wx:key="id" class="card product" data-id="{{item.id}}" bindtap="openProduct">
+    <image wx:if="{{item.displayCover}}" class="cover" mode="aspectFill" src="{{item.displayCover}}" />
+    <view wx:else class="cover placeholder">♥</view>
+    <view class="grow product-body">
+      <view class="row between">
+        <text class="title">{{item.name}}</text>
+        <text wx:if="{{item.recommended}}" class="badge">推荐</text>
+      </view>
+      <text class="description">{{item.description || '老板还没来得及写介绍'}}</text>
+      <view class="row between footer">
+        <text class="price">{{item.displayPrice}}</text>
+        <text class="add">选规格 ＋</text>
+      </view>
+    </view>
+  </view>
+
+  <role-nav role="customer" active="home" cart-count="{{cartCount}}" />
+</view>

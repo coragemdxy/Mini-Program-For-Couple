@@ -1,0 +1,10 @@
+.summary {
+  display: block;
+  margin: 22rpx 0;
+  line-height: 1.6;
+}
+
+.meta {
+  padding-top: 18rpx;
+  border-top: 1rpx solid var(--line);
+}
