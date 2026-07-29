@@ -24,7 +24,20 @@ module.exports = {
 
 ## 2. 后端与数据库
 
-云托管使用仓库根目录的 `backend/Dockerfile` 构建，容器监听环境变量 `PORT`。
+云托管使用仓库根目录的 `Dockerfile` 构建，容器监听环境变量 `PORT`。
+
+在云托管的「构建设置」中填写：
+
+```text
+目标目录：留空（仓库根目录）
+Dockerfile 文件：有
+Dockerfile 名称：Dockerfile
+访问端口：80
+服务端口：8080
+```
+
+不要将目标目录设置成 `backend`，根目录的 Dockerfile 需要同时读取父工程
+`pom.xml` 和 `backend` 模块。
 
 准备 MySQL，并设置：
 
